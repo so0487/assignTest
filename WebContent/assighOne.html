@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="login.css">
+<title>Insert title here</title>
+
+</head>
+
+<body>
+	<h1>로그인 페이지</h1>
+		
+	<form>
+		<p><a>아이디</a><input type="text" id="id"></p>
+		<p><a>비밀번호</a><input type="password" id="pwd"></p>
+	</form>
+	
+	<input type="submit" value="로그인" id="loginBtn">
+	
+	
+	
+</body>
+
+<script>
+$(function(){
+	$("#loginBtn").click(function() {
+		//alert("로그인 버튼 클릭");
+		var id = $("#id").val();
+		var pwd = $("#pwd").val();
+		
+		$.ajax({
+			url:"/assighTest/home.html",
+			type:"post",
+			dataType:"json"
+		})
+		.done(function(res){
+			var db_pwd=res.pwd;
+			if(pwd==db_pwd){
+				alert("로그인 성공");
+			}else{
+				alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+			}
+		})
+		.fail(function(e){
+			alert("fail : "+e.status);
+		});
+	});
+});		
+</script>
+</html>

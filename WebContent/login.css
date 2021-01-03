@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+h1{
+	text-align: center;
+}
+
+#loginBtn{
+	background-color: yellow;
+}
